@@ -1,4 +1,4 @@
-const CACHE_NAME = 'splat-v1';
+const CACHE_NAME = 'splat-v2';
 const ASSETS = [
   '.',
   'index.html',

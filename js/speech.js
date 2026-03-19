@@ -1,17 +1,18 @@
 /**
- * German SpeechSynthesis wrapper.
+ * German speech: pre-generated audio files with SpeechSynthesis fallback.
  */
 
 let germanVoice = null;
 let voiceReady = false;
+let audioCache = {};
 
-// Start looking for voices immediately — they may load async
+// Start looking for fallback voices immediately
 findAndCacheVoice();
 if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.addEventListener('voiceschanged', findAndCacheVoice);
 }
 
-/** Find the best German voice available. */
+/** Find the best German voice for fallback. */
 function findAndCacheVoice() {
   const voices = speechSynthesis.getVoices();
   if (!voices.length) return;
@@ -22,25 +23,50 @@ function findAndCacheVoice() {
   voiceReady = true;
 }
 
-/** Initialize speech (call from user gesture to ensure voices are loaded). */
+/** Initialize speech (call from user gesture). */
 export function initSpeech() {
   findAndCacheVoice();
 }
 
 /**
  * Speak a syllable in German.
+ * Tries pre-generated audio file first, falls back to SpeechSynthesis.
  * Returns a Promise that resolves when speaking ends.
  */
 export function speak(syllable) {
+  const filename = syllable.toLowerCase();
+  const path = `sounds/syllables/${filename}.m4a`;
+
+  // Try pre-generated file first
+  return playFile(path).catch(() => speakFallback(syllable));
+}
+
+/** Play a pre-generated audio file. */
+function playFile(path) {
+  return new Promise((resolve, reject) => {
+    // Reuse cached Audio elements
+    if (!audioCache[path]) {
+      audioCache[path] = new Audio(path);
+    }
+
+    const audio = audioCache[path];
+    audio.currentTime = 0;
+
+    audio.onended = resolve;
+    audio.onerror = reject;
+
+    audio.play().catch(reject);
+  });
+}
+
+/** Fallback: use browser SpeechSynthesis. */
+function speakFallback(syllable) {
   return new Promise((resolve) => {
-    // Cancel any ongoing speech
     speechSynthesis.cancel();
 
-    // Re-check voices in case they weren't ready before
     if (!voiceReady) findAndCacheVoice();
 
-    // Always pass lowercase to prevent SpeechSynthesis from spelling
-    // uppercase as abbreviations (e.g. "MO" → "M-O"). Display case is unaffected.
+    // Lowercase to prevent abbreviation spelling
     const utterance = new SpeechSynthesisUtterance(syllable.toLowerCase());
     utterance.lang = 'de-DE';
     utterance.rate = 0.8;
