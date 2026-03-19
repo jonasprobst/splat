@@ -39,7 +39,9 @@ export function speak(syllable) {
     // Re-check voices in case they weren't ready before
     if (!voiceReady) findAndCacheVoice();
 
-    const utterance = new SpeechSynthesisUtterance(syllable);
+    // Always pass lowercase to prevent SpeechSynthesis from spelling
+    // uppercase as abbreviations (e.g. "MO" → "M-O"). Display case is unaffected.
+    const utterance = new SpeechSynthesisUtterance(syllable.toLowerCase());
     utterance.lang = 'de-DE';
     utterance.rate = 0.8;
     utterance.pitch = 1.0;
