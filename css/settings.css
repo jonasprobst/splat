@@ -1,0 +1,213 @@
+/* === Settings Screen === */
+.settings {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.settings__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  min-height: 56px;
+}
+
+.settings__title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.settings__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* === Picker Section === */
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.picker__label {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picker__toggle-all {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  min-height: var(--touch-min);
+  display: flex;
+  align-items: center;
+}
+
+.picker__toggle-all:active {
+  background: var(--color-bg-alt);
+}
+
+.picker__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.picker__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid #ddd;
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.picker__btn--selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.picker__btn:active {
+  transform: scale(0.93);
+}
+
+.picker__min-warning {
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary);
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+/* === Case Mode Toggle === */
+.case-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.case-toggle__label {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.case-toggle__options {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.case-toggle__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  padding: var(--space-sm);
+  border: 2px solid #ddd;
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.case-toggle__btn--selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.case-toggle__btn:active {
+  transform: scale(0.93);
+}
+
+/* === Sound Toggle === */
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+}
+
+.sound-toggle__label {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.sound-toggle__switch {
+  position: relative;
+  width: 56px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.sound-toggle__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sound-toggle__slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 32px;
+  transition: background var(--transition-fast);
+}
+
+.sound-toggle__slider::before {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--color-white);
+  border-radius: var(--radius-round);
+  transition: transform var(--transition-fast);
+  box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+.sound-toggle__input:checked + .sound-toggle__slider {
+  background: var(--color-primary);
+}
+
+.sound-toggle__input:checked + .sound-toggle__slider::before {
+  transform: translateX(24px);
+}

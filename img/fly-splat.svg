@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140">
+  <!-- Splat marks radiating out -->
+  <g fill="#7ab648" fill-opacity="0.8">
+    <ellipse cx="20" cy="30" rx="12" ry="6" transform="rotate(-30 20 30)"/>
+    <ellipse cx="100" cy="25" rx="10" ry="5" transform="rotate(25 100 25)"/>
+    <ellipse cx="15" cy="90" rx="11" ry="5" transform="rotate(-15 15 90)"/>
+    <ellipse cx="105" cy="95" rx="13" ry="5" transform="rotate(20 105 95)"/>
+    <ellipse cx="30" cy="120" rx="9" ry="4" transform="rotate(-10 30 120)"/>
+    <ellipse cx="90" cy="125" rx="10" ry="4" transform="rotate(15 90 125)"/>
+    <ellipse cx="60" cy="15" rx="8" ry="4"/>
+  </g>
+
+  <!-- Splat droplets -->
+  <g fill="#7ab648">
+    <circle cx="10" cy="50" r="4"/>
+    <circle cx="110" cy="55" r="3"/>
+    <circle cx="25" cy="130" r="3"/>
+    <circle cx="95" cy="130" r="4"/>
+    <circle cx="50" cy="5" r="3"/>
+    <circle cx="75" cy="8" r="2"/>
+  </g>
+
+  <!-- Main splat blob -->
+  <ellipse cx="60" cy="75" rx="42" ry="38" fill="#8cc63f"/>
+
+  <!-- Flattened fly body (squished) -->
+  <ellipse cx="60" cy="75" rx="38" ry="14" fill="#555555" fill-opacity="0.7"/>
+
+  <!-- Squished eyes (X eyes) -->
+  <g stroke="#2d3436" stroke-width="2.5" stroke-linecap="round">
+    <!-- Left X -->
+    <line x1="45" y1="70" x2="53" y2="78"/>
+    <line x1="53" y1="70" x2="45" y2="78"/>
+    <!-- Right X -->
+    <line x1="67" y1="70" x2="75" y2="78"/>
+    <line x1="75" y1="70" x2="67" y2="78"/>
+  </g>
+
+  <!-- Flattened wings sticking out -->
+  <ellipse cx="22" cy="68" rx="16" ry="5" fill="#d4e8f0" fill-opacity="0.5" transform="rotate(-15 22 68)"/>
+  <ellipse cx="98" cy="68" rx="16" ry="5" fill="#d4e8f0" fill-opacity="0.5" transform="rotate(15 98 68)"/>
+
+  <!-- Bent legs -->
+  <g stroke="#555" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <line x1="30" y1="82" x2="18" y2="95"/>
+    <line x1="60" y1="88" x2="60" y2="100"/>
+    <line x1="90" y1="82" x2="102" y2="95"/>
+  </g>
+</svg>

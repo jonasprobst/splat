@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140">
+  <!-- Wings -->
+  <g class="fly-wings">
+    <ellipse cx="30" cy="45" rx="28" ry="16" fill="#d4e8f0" fill-opacity="0.7" stroke="#a8c8d8" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate" values="-5 30 55;5 30 55;-5 30 55" dur="0.15s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="90" cy="45" rx="28" ry="16" fill="#d4e8f0" fill-opacity="0.7" stroke="#a8c8d8" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate" values="5 90 55;-5 90 55;5 90 55" dur="0.15s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <!-- Body -->
+  <ellipse cx="60" cy="80" rx="36" ry="40" fill="#555555"/>
+  <ellipse cx="60" cy="80" rx="33" ry="37" fill="#6b6b6b"/>
+
+  <!-- Belly / chest area (where syllable goes) -->
+  <ellipse cx="60" cy="82" rx="24" ry="26" fill="#4a4a4a"/>
+
+  <!-- Head -->
+  <circle cx="60" cy="38" r="18" fill="#555555"/>
+  <circle cx="60" cy="38" r="16" fill="#6b6b6b"/>
+
+  <!-- Eyes -->
+  <g class="fly-eyes">
+    <!-- Left eye -->
+    <ellipse cx="50" cy="34" rx="9" ry="10" fill="white"/>
+    <circle cx="52" cy="34" r="5" fill="#2d3436"/>
+    <circle cx="53.5" cy="32.5" r="2" fill="white"/>
+
+    <!-- Right eye -->
+    <ellipse cx="70" cy="34" rx="9" ry="10" fill="white"/>
+    <circle cx="68" cy="34" r="5" fill="#2d3436"/>
+    <circle cx="69.5" cy="32.5" r="2" fill="white"/>
+  </g>
+
+  <!-- Little smile -->
+  <path d="M54 44 Q60 49 66 44" fill="none" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Antennae -->
+  <line x1="50" y1="22" x2="40" y2="8" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="40" cy="8" r="3" fill="#555"/>
+  <line x1="70" y1="22" x2="80" y2="8" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="80" cy="8" r="3" fill="#555"/>
+
+  <!-- Legs -->
+  <g stroke="#555" stroke-width="2" stroke-linecap="round">
+    <line x1="38" y1="100" x2="24" y2="118"/>
+    <line x1="60" y1="108" x2="60" y2="128"/>
+    <line x1="82" y1="100" x2="96" y2="118"/>
+  </g>
+</svg>

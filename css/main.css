@@ -1,0 +1,217 @@
+/* === Design Tokens === */
+:root {
+  /* Colors */
+  --color-bg: #f0f7ee;
+  --color-bg-alt: #e8f5e3;
+  --color-primary: #4ecdc4;
+  --color-primary-dark: #3ab5ad;
+  --color-secondary: #ff6b6b;
+  --color-secondary-dark: #ee5a5a;
+  --color-accent: #ffe66d;
+  --color-text: #2d3436;
+  --color-text-light: #636e72;
+  --color-white: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+
+  /* Typography */
+  --font-family: 'Atkinson Hyperlegible Mono', 'Arial', sans-serif;
+  --font-size-xs: clamp(0.75rem, 2vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);
+  --font-size-md: clamp(1rem, 3vw, 1.25rem);
+  --font-size-lg: clamp(1.5rem, 5vw, 2rem);
+  --font-size-xl: clamp(2rem, 8vw, 3.5rem);
+  --font-size-xxl: clamp(3rem, 12vw, 5rem);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-round: 50%;
+
+  /* Touch targets */
+  --touch-min: 48px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* === Reset === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* === Screen System === */
+.screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  z-index: 1;
+}
+
+.screen--active {
+  display: flex;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 700;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+}
+
+.btn:active {
+  transform: scale(0.93);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-round);
+  width: 80px;
+  height: 80px;
+  font-size: var(--font-size-lg);
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-dark);
+}
+
+.btn--large {
+  width: 100px;
+  height: 100px;
+}
+
+.btn--secondary {
+  background: var(--color-white);
+  color: var(--color-text);
+  border-radius: var(--radius-round);
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.btn--secondary:active {
+  background: var(--color-bg-alt);
+}
+
+.btn--round {
+  background: var(--color-accent);
+  color: var(--color-text);
+  border-radius: var(--radius-round);
+  width: 64px;
+  height: 64px;
+  box-shadow: 0 3px 10px var(--color-shadow);
+}
+
+.btn--round:active {
+  background: #f0d85e;
+}
+
+.btn--icon {
+  background: transparent;
+  color: var(--color-text);
+  border-radius: var(--radius-round);
+}
+
+.btn__icon {
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.btn__icon-svg {
+  display: block;
+}
+
+/* === Title Screen === */
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-xl);
+}
+
+.title__logo {
+  font-size: var(--font-size-xxl);
+  font-weight: 800;
+  color: var(--color-secondary);
+  text-shadow:
+    3px 3px 0 var(--color-accent),
+    -1px -1px 0 var(--color-text);
+  letter-spacing: 0.05em;
+  transform: rotate(-3deg);
+}
+
+.title__fly-decoration {
+  width: clamp(100px, 25vw, 160px);
+  animation: title-fly-hover 2s ease-in-out infinite;
+}
+
+.title__fly-img {
+  width: 100%;
+  height: auto;
+}
+
+.title__buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+@keyframes title-fly-hover {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+/* === Safe area padding for notched devices === */
+@supports (padding: env(safe-area-inset-top)) {
+  .screen {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}

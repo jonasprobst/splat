@@ -1,0 +1,20 @@
+# Claude Code
+.claude/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (in case of local dev server)
+node_modules/
+
+# OS
+Thumbs.db

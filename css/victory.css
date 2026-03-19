@@ -1,0 +1,72 @@
+/* === Victory Screen === */
+.victory {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.victory__confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.victory__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  text-align: center;
+}
+
+.victory__star {
+  font-size: clamp(4rem, 15vw, 8rem);
+  animation: star-bounce 1s ease-in-out infinite;
+}
+
+@keyframes star-bounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.15) rotate(5deg); }
+}
+
+.victory__message {
+  font-size: var(--font-size-xxl);
+  font-weight: 800;
+  color: var(--color-secondary);
+  text-shadow: 2px 2px 0 var(--color-accent);
+}
+
+.victory__buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* === Confetti Pieces === */
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  top: -20px;
+  animation: confetti-fall linear forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
